@@ -1,0 +1,16 @@
+{
+	"name": "VanArsdelRentalsSource",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=OHDataOnPremSQL;initial catalog=OnPremRentals;user id=southridge",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1NzY0Yzg2NC03MGJhLTRhZGItYWUwNi05Yjk1NjNlNTZjYWQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "SQLSourceIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
