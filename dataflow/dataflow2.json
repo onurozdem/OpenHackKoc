@@ -1,0 +1,54 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SalesAdresses",
+						"type": "DatasetReference"
+					},
+					"name": "SalesAddresses"
+				},
+				{
+					"dataset": {
+						"referenceName": "SalesCustomers",
+						"type": "DatasetReference"
+					},
+					"name": "SalesCustomers"
+				},
+				{
+					"dataset": {
+						"referenceName": "StreamAdresses",
+						"type": "DatasetReference"
+					},
+					"name": "StreamAddreses"
+				},
+				{
+					"dataset": {
+						"referenceName": "StreamCustomers",
+						"type": "DatasetReference"
+					},
+					"name": "StreamCustomers"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "Join1"
+				},
+				{
+					"name": "Join2"
+				},
+				{
+					"name": "DerivedColumn1"
+				},
+				{
+					"name": "Select1"
+				}
+			],
+			"script": "source(output(\n\t\tAddressID as string,\n\t\tCustomerID as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> SalesAddresses\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> SalesCustomers\nsource(output(\n\t\tAddressID as string,\n\t\tCustomerID as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> StreamAddreses\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> StreamCustomers\nSalesAddresses, SalesCustomers join(SalesAddresses@CustomerID == SalesCustomers@CustomerID,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> Join1\nStreamAddreses, StreamCustomers join(StreamAddreses@CustomerID == StreamCustomers@CustomerID,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> Join2\nJoin1 derive(SourceSystemId = 1,\n\t\tGlobalCustomerID = uuid(),\n\t\tSourceSystemCustomerID = SalesCustomers@CustomerID,\n\t\tCreatedDate = iif(SalesCustomers@CreatedDate > SalesAddresses@CreatedDate, SalesCustomers@CreatedDate,SalesAddresses@CreatedDate ),\n\t\tUpdatedDate = iif(SalesCustomers@UpdatedDate > SalesAddresses@UpdatedDate,SalesCustomers@UpdatedDate, SalesAddresses@UpdatedDate)) ~> DerivedColumn1\nDerivedColumn1 select(mapColumn(\n\t\tSourceSystemId,\n\t\tGlobalCustomerID,\n\t\tSourceSystemCustomerID,\n\t\tAddressID,\n\t\tCustomerID = SalesAddresses@CustomerID,\n\t\tAddressLine1,\n\t\tAddressLine2,\n\t\tCity,\n\t\tState,\n\t\tZipCode,\n\t\tCreatedDate,\n\t\tUpdatedDate,\n\t\tCustomerID = SalesCustomers@CustomerID,\n\t\tLastName,\n\t\tFirstName,\n\t\tPhoneNumber\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1"
+		}
+	}
+}
