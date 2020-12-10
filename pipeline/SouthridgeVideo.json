@@ -298,20 +298,20 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "MoviesSource",
+						"referenceName": "Source_Movies",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "MoviesTarget",
+						"referenceName": "Destination_MoviesTarget",
 						"type": "DatasetReference"
 					}
 				]
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2020-12-09T09:16:54Z"
+		"lastPublishTime": "2020-12-10T08:32:49Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
