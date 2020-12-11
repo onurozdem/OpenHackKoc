@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "SouthridgeVideoDF"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"CloudStreaming_connectionString": {
+			"value": ""
+		},
+		"CosmosMovies_connectionString": {
+			"value": ""
+		},
+		"FourthCoffeeRentalsSource_password": {
+			"value": ""
+		},
+		"VanArsdelRentalsSource_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://southridgevideosa.dfs.core.windows.net"
+		},
+		"FourthCoffeeRentalsSource_properties_typeProperties_host": {
+			"value": "C:\\Rentals"
+		},
+		"FourthCoffeeRentalsSource_properties_typeProperties_userId": {
+			"value": "southridge"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

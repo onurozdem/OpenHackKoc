@@ -55,7 +55,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "SourceDataset_vzd",
+									"referenceName": "Source_VanArsdel",
 									"type": "DatasetReference",
 									"parameters": {
 										"cw_table": "@item().source.table"
@@ -64,7 +64,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "DestinationDataset_vzd",
+									"referenceName": "Destination_VanArsdel",
 									"type": "DatasetReference",
 									"parameters": {
 										"cw_fileName": "@item().destination.fileName"
@@ -132,7 +132,7 @@
 			}
 		},
 		"annotations": [],
-		"lastPublishTime": "2020-12-09T11:57:39Z"
+		"lastPublishTime": "2020-12-10T09:23:47Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

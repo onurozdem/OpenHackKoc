@@ -1,0 +1,19 @@
+{
+	"name": "Destination_FourthCoffee",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "FourthCoffee",
+				"fileSystem": "southridgevideostorage"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
