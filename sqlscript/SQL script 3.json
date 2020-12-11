@@ -1,0 +1,16 @@
+{
+	"name": "SQL script 3",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [SourceSystemId]\n,[GlobalCustomerID]\n,[SourceSystemCustomerID]\n,[LastName]\n,[FirstName]\n,[AddressLine1]\n,[AddressLine2]\n,[AddressID]\n,[City]\n,[State]\n,[ZipCode]\n,[PhoneNumber]\n,[CreatedDate]\n,[UpdatedDate]\n FROM [dbo].[Customers]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"name": "southridgessql",
+				"type": "SqlPool"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}
