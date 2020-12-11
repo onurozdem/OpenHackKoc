@@ -1,0 +1,16 @@
+{
+	"name": "SQL script 1",
+	"properties": {
+		"content": {
+			"query": "-- This is auto-generated code\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://southridgevideosa.dfs.core.windows.net/southridgevideostorage/KombineData/Customers.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION='2.0'\n    ) AS [result]\r\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"name": "master",
+				"type": "SqlOnDemand"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}
