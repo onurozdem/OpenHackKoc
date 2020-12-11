@@ -3,7 +3,10 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "southridgesynapse2-WorkspaceDefaultSqlServer",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"DBName": "southridgessql"
+			}
 		},
 		"annotations": [],
 		"type": "AzureSqlDWTable",
