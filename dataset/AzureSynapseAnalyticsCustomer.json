@@ -1,0 +1,16 @@
+{
+	"name": "AzureSynapseAnalyticsCustomer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "southridgesynapse2-WorkspaceDefaultSqlServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "customer"
+		}
+	}
+}
